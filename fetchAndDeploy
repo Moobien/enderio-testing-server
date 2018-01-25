@@ -74,7 +74,7 @@ if [ "$smthchanged" = true ] ; then
 
 	
 	rm -Rf "$webroot"*
-	zip -r "$webroot/$multimcarchivename" multimc	
+	zip -r "$webroot/$multimcarchivename" $basedir"multimc"
   
 	if [ $ncReturn -eq 0 ]; then
 		echo "server is running"
