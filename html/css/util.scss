@@ -1,0 +1,62 @@
+$scrollbar-thickness: 17px;
+
+$header-height: 3.4rem;
+$feed-width: 35rem;
+$default-margin: 1.4rem;
+$feed-header-height: 3rem;
+
+$white: #ffffff;
+$black: #000000;
+$background-color: #0E2D31;
+$header-color: #184D54;
+$primary: #184D54;
+$secondary: #067786;
+$cyan: #09AEC4;
+$link-color: #077685;
+$callout-color: #EDEDED;
+
+$default-text-color: #555;
+
+$default-border-radius: 0.50rem;
+
+$font-family-sans-serif:
+  // Safari for OS X and iOS (San Francisco)
+  -apple-system,
+  // Chrome >= 56 for OS X (San Francisco), Windows, Linux and Android
+  system-ui,
+  // Chrome < 56 for OS X (San Francisco)
+  BlinkMacSystemFont,
+  // Windows
+  "Segoe UI",
+  // Android
+  "Roboto",
+  // Basic web fallback
+  "Helvetica Neue", Arial, sans-serif !default;
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin border-radius-specific($radius, $radius2, $radius3, $radius4) {
+  -webkit-border-radius: $radius $radius2 $radius3 $radius4;
+     -moz-border-radius: $radius $radius2 $radius3 $radius4;
+      -ms-border-radius: $radius $radius2 $radius3 $radius4;
+          border-radius: $radius $radius2 $radius3 $radius4;
+}
+
+@mixin no-select{
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.hidden{
+  display: none;
+}

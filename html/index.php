@@ -12,13 +12,13 @@ $serverSock = @stream_socket_client('tcp://'.$ip.':'.$port, $empty, $empty, 1);
 if($serverSock !== FALSE)
 {
     fwrite($serverSock, "\xfe");
-    
+
     $response = fread($serverSock, 2048);
     $response = str_replace("\x00", '', $response);
     $response = substr($response, 2);
-    
+
     $data = explode("\xa7", $response);
-    
+
     unset($response);
 
     fclose($serverSock);
@@ -48,7 +48,7 @@ if($serverSock !== FALSE)
           <div>
             <h1>EnderIO Test Server</h1>
             <span id="tagline">"Play, have fun and find bugs"</span>
-          </div> 
+          </div>
 
           <div id="server-status">
             <div>
@@ -56,11 +56,11 @@ if($serverSock !== FALSE)
             </div>
             <div>
               <strong>
-			  <?php echo $serverMotd; 
+			  <?php echo $serverMotd;
 			  ?>
 			  </strong>
               <p>
-			  <?php 
+			  <?php
 			  echo $onlinePlayers.'/'.$maxPlayers;
 			  ?> player(s) online.</p>
               <p>mc.joduwei.com</p>
@@ -76,7 +76,7 @@ if($serverSock !== FALSE)
           <h2>Reporting bugs</h2>
           <p>
             Play and have fun, but remember to report the bugs you discover.<br />
-            All bugs should be reported in #server-bugreports at EnderIO's Discord server. 
+            All bugs should be reported in #server-bugreports at EnderIO's Discord server.
           </p>
          <!-- <p class="callout">
             <strong>Before reporting any bugs,</strong> please search and familiarise yourself with the issues that have already been reported.
@@ -94,7 +94,7 @@ if($serverSock !== FALSE)
 	<li><a href="https://minecraft.curseforge.com/projects/storage-drawers/files/2432437/download">StorageDrawers-1.11.2-4.2.9.jar</a></li>
         <li><a href="https://minecraft.curseforge.com/projects/tinkers-construct/files/2451489/download">TConstruct-1.11.2-2.7.1.34.jar</a></li>
         <li><a href="https://minecraft.curseforge.com/projects/the-one-probe/files/2469332/download">theoneprobe-1.1x-1.4.18.jar</a></li>
-	<li><a href="https://minecraft.curseforge.com/projects/mantle/files/2413993/download">Mantle-1.11.2-1.2.0.26.jar</a></li> 
+	<li><a href="https://minecraft.curseforge.com/projects/mantle/files/2413993/download">Mantle-1.11.2-1.2.0.26.jar</a></li>
         <li><a href="https://minecraft.curseforge.com/projects/chameleon/files/2419176/download">Chameleon-1.11.2-3.1.0.jar</a></li>
         <li><a href="https://minecraft.curseforge.com/projects/compatlayer/files/2511880/download">compatlayer-1.11.2-0.3.0.jar</a></li>
         <li><a href="https://minecraft.curseforge.com/projects/the-middle-torch/files/2514321/download">middletorch-5.0.7.jar</a></li>
@@ -103,21 +103,22 @@ if($serverSock !== FALSE)
 	<li><a href="https://minecraft.curseforge.com/projects/ftblib/files/2422883/download">FTBLib-1.1x-3.6.5.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/ftb-utilities/files/2422884/download">FTBUtilities-1.1x-3.6.5.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/tinkers-tool-leveling/files/2424685/download">TinkerToolLeveling-1.11.2-1.0.1.jar</a></li>
-	
-	
+
+
 	<li><a href="https://minecraft.curseforge.com/projects/thermal-dynamics/files/2489725/download">ThermalDynamics-1.11.2-2.2.7.16-universal.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/thermalexpansion/files/2489699/download">ThermalExpansion-1.11.2-5.2.7.30-universal.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/codechicken-lib-1-8/files/2509809/download">CodeChickenLib-1.11.2-3.0.0.328-universal.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/thermal-foundation/files/2453220/download">ThermalFoundation-1.11.2-2.2.5.16-universal.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/cofhcore/files/2469613/download">CoFHCore-1.11.2-4.2.8.16-universal.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/baubles/files/2458753/download">Baubles-1.11-1.4.6.jar</a></li>
-	
+
 	<li><a href="$enderCoreURL">$enderCoreFile</a></li>
 	<li><a href="$enderioURL">$enderioFile</a></li>
           </ul>
           <p><i>Please note that the links are generated automatically. If your jar files are outdated, you can visit this page.</i></p>
         </div>
       </div>
+      <div id="margin-fix">&nbsp;</div>
     </div>
   <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
   </body>

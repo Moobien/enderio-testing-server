@@ -1,0 +1,112 @@
+@import "util";
+
+// Reset
+*{
+  margin: 0; padding: 0; box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body{
+  font-family: $font-family-sans-serif;
+  background-color: $background-color;
+}
+
+a{
+  text-decoration: none;
+}
+
+.highlight{
+  color: $primary;
+  font-style: italic;
+}
+
+#app{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $default-margin 0;
+}
+
+#margin-fix{
+  display: block;
+  height: $default-margin;
+}
+
+#container{
+    width: 50rem;
+    min-width: 35rem;
+    background-color: $white;
+    margin-top: $default-margin;
+    @include border-radius($default-border-radius);
+    padding: $default-margin;
+}
+
+#margin-fix{
+  display: block;
+  height: $default-margin;
+}
+
+#header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#server-status{
+  padding: $default-margin/2;
+  background-color: $primary;
+  @include border-radius($default-border-radius);
+  border: 0.3rem solid $cyan;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  img {
+    margin-right: $default-margin/2;
+  }
+}
+
+h1{
+  font-size: 1.7rem;
+  color: $header-color;
+}
+h2{
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: $default-margin 0 0;
+}
+a{
+  color: $link-color;
+}
+ul{
+  margin: $default-margin;
+}
+
+#main p{
+  margin-top: $default-margin/3;
+}
+
+#main p.callout{
+  display: block;
+  padding: $default-margin;
+  margin: $default-margin 0 0 0;
+  background-color: $callout-color;
+  @include border-radius($default-border-radius);
+}
+
+#tagline{
+  font-style: italic;
+}
+
+.module{
+  hr{
+    height: 0.19rem;
+    margin: $default-margin 0 $default-margin*2 0;
+    @include border-radius($default-border-radius);
+    background-color: #f5f5f5;
+    border: none;
+  }
+}
