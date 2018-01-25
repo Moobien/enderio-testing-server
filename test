@@ -1,0 +1,106 @@
+#!/bin/bash
+
+source config/base.cfg
+
+serverdir=$basedir"server/"
+moddir=$serverdir"mods/"
+smthchanged=false
+multimcversion=`cat multimc.version`
+multimcarchivename=enderiotest_multimc_rev$multimcversion
+multimcmodsdir=$basedir"multimc/.minecraft/mods/"
+minecraftport=`grep server-port server/server.properties|cut -d'=' -f2 | tr -d '\040\011\012\015'`
+
+
+mod_entries=""
+
+for file in config/jarconfig.d/*.cfg; do
+    [ -e "$file" ] || continue
+    echo "$file"
+	
+	source $file
+	# $name
+	# $jarPrefix
+	# $artifact
+	# $jenkinsURL
+	
+	echo "Parse API data to find file name of latest EnderCore build"
+	file=$(curl -s $jenkinsURL/api/json | jq -r '.artifacts['$artifact'].fileName')
+	url=$jenkinsURL"artifact/build/libs/$file"
+	
+	modEntries=$modEntries"<li><a href=\"$url\">$file</a></li>"
+	
+	echo "Check if $name is up to date"
+	if [ -e "tmp"/$file ]; then
+		echo "$name is up to date!"
+	else
+		smthchanged=true
+		# Remove old bot jar
+		echo "Deleting old $name jar"
+		rm -f tmp/$jarPrefix
+		# Download new bot jar
+		echo "Downloading new file: $enderCoreFile"
+		wget $url -P tmp
+		
+		  echo "deleting $moddir $jarPrefix"
+		  rm -f "$moddir $jarPrefix"
+		  echo "deleting $multimcmodsdir $jarPrefix"
+		  rm -f "$multimcmodsdir $jarPrefix"
+		
+		echo "Copy $file into server to mods"
+		cp tmp/$file $moddir
+		echo "Copy $file into server to multimc"
+		cp tmp/$file $multimcmodsdir
+  fi
+done
+
+echo $modEntries
+
+if ! screen -list | grep -q "mcscreen"; then
+  echo "No current Minecraft instance found"
+  screen -dmS mcscreen
+fi
+ echo "checking minecraft port $minecraftport"
+nc -z localhost $minecraftport
+ncReturn=$?
+if [ "$smthchanged" = true ] ; then
+	if [ $ncReturn -eq 0 ]; then
+		echo "server is running"
+		echo "Terminating current Minecraft instance"
+		
+		screen -S mcscreen -p 0 -X stuff "say installed new Ender-IO/Core version, restarting server in 30 seconds ^M"
+		sleep 10 &
+		wait %1
+		screen -S mcscreen -p 0 -X stuff "say 20 seconds remaining ^M"
+		sleep 10 &
+		screen -S mcscreen -p 0 -X stuff "say 10 seconds remaining ^M"
+
+		COUNTER=9
+			 while [  $COUNTER -gt 0 ]; do
+			  screen -S mcscreen -p 0 -X stuff "say ... $COUNTER ^M"
+			  sleep 1 &
+			  wait %1
+
+				 let COUNTER=COUNTER-1
+			 done
+
+		screen -S mcscreen -p 0 -X stuff "stop^M"
+		sleep 10 &
+		wait %1
+	else
+		echo "s"
+	fi
+fi
+
+if [ $ncReturn -eq 1 ]; then
+  screen -S mcscreen -p 0 -X stuff 'cd '$serverdir'^M'
+  echo "running command: $runCommand"
+  screen -S mcscreen -p 0 -X stuff 'java -jar forge-1.11.2-13.20.1.2588-universal.jar nogui ^M'
+  screen -S mcscreen -p 0 -X eval "stuff '$runCommand'\015"
+fi
+
+  #awk  '{gsub(/\$mufile/,"'$mufile'");gsub(/\$modEntries/,"'$modEntries'")}1' $basedir'html/index.php'
+  
+  sed "s/\$modEntries/"test"/" $basedir'html/index.php'
+#awk  '{'$mod_gsubs'}1' 
+
+
