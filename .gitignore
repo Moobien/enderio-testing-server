@@ -1,5 +1,6 @@
 server/*
 tmp/*
 multimc/*
+webroot
 
 multimc\.version
