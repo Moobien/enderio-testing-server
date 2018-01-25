@@ -1,8 +1,8 @@
 #!/bin/bash
 
 basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source "$basedir"config/base.cfg
-
+source $basedir"config/base.cfg"
+echo "source "$basedir"config/base.cfg"
 serverdir=$basedir"server/"
 moddir=$serverdir"mods/"
 smthchanged=false
