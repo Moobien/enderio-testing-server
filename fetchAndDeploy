@@ -45,9 +45,9 @@ for file in config/jarconfig.d/*.cfg; do
 		wget $url -P tmp
 		
 		echo "deleting $moddir""$jarPrefix"
-		rm -f "$moddir""$jarPrefix"
+		rm -f $moddir$jarPrefix
 		echo "deleting""$multimcmodsdir $jarPrefix"
-		rm -f "$multimcmodsdir""$jarPrefix"
+		rm -f $multimcmodsdir$jarPrefix
 		
 		echo "Copy $file into server to mods"
 		cp tmp/$file $moddir
