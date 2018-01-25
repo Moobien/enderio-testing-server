@@ -1,6 +1,7 @@
 #!/bin/bash
 
-source config/base.cfg
+basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source $basedir/config/base.cfg
 
 serverdir=$basedir"server/"
 moddir=$serverdir"mods/"
