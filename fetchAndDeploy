@@ -115,7 +115,7 @@ if [ $ncReturn -eq 1 ]; then
 fi
 
 	mufile="$multimcarchivename".zip
-	eval "awk '{gsub(/"'\$mufile'"/,\""$mufile"\");gsub(/"'\$modEntries'"/,\""$modEntries"\")}1' html/index.php >> "$webroot"index.php"
+	eval "awk '{gsub(/"'\$mufile'"/,\""$mufile"\");gsub(/"'\$modEntries'"/,\""$modEntries"\")}1' html/index.php > "$webroot"index.php"
 	sass html/css/util.scss $webroot/css/util.css
 	sass html/css/main.scss $webroot/css/main.css
 
