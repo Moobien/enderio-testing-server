@@ -80,6 +80,7 @@ if [ "$smthchanged" = true ] ; then
 		wait %1
 		screen -S mcscreen -p 0 -X stuff "say 20 seconds remaining ^M"
 		sleep 10 &
+		wait %1
 		screen -S mcscreen -p 0 -X stuff "say 10 seconds remaining ^M"
 
 		COUNTER=9
@@ -109,7 +110,7 @@ fi
 
 	mufile="$multimcarchivename".zip
 	eval "awk '{gsub(/"'\$mufile'"/,\""$mufile"\");gsub(/"'\$modEntries'"/,\""$modEntries"\")}1' html/index.php >> "$webroot"index.php"
-	node-sass html/css/util.scss $webroot/css/util.css
-	node-sass html/css/main.scss $webroot/css/main.css
+	sass html/css/util.scss $webroot/css/util.css
+	sass html/css/main.scss $webroot/css/main.css
 
 
