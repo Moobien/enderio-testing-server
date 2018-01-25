@@ -27,7 +27,7 @@ for file in config/jarconfig.d/*.cfg; do
 	file=$(curl -s $jenkinsURL/api/json | jq -r '.artifacts['$artifact'].fileName')
 	url=$jenkinsURL"artifact/build/libs/$file"
 	
-	modEntries=$modEntries"<li><a href=\"$url\">$file</a></li>"
+	modEntries=$modEntries'<li><a href=\"'$url'\">'$file'</a></li>'
 	
 	echo "Check if $name is up to date"
 	if [ -e "tmp"/$file ]; then
@@ -63,6 +63,14 @@ fi
 nc -z localhost $minecraftport
 ncReturn=$?
 if [ "$smthchanged" = true ] ; then
+
+
+	echo $(expr $multimcversion + 1) > multimc.version
+
+	
+	rm -f "$webroot"*.zip
+	zip -r "$webroot/$multimcarchivename" multimc	
+  
 	if [ $ncReturn -eq 0 ]; then
 		echo "server is running"
 		echo "Terminating current Minecraft instance"
@@ -98,9 +106,8 @@ if [ $ncReturn -eq 1 ]; then
   screen -S mcscreen -p 0 -X eval "stuff '$runCommand'\015"
 fi
 
-  #awk  '{gsub(/\$mufile/,"'$mufile'");gsub(/\$modEntries/,"'$modEntries'")}1' $basedir'html/index.php'
-  
-  sed "s/\$modEntries/"test"/" $basedir'html/index.php'
-#awk  '{'$mod_gsubs'}1' 
+	mufile="$multimcarchivename".zip
+	eval "awk '{gsub(/"'\$mufile'"/,\""$mufile"\");gsub(/"'\$modEntries'"/,\""$modEntries"\")}1' html/index.php >> "$webroot"index.php"
+
 
 

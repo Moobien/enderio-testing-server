@@ -1,7 +1,6 @@
 #!/bin/bash
-cd "$(dirname "$0")";
 
-source base.cfg
+source config/base.cfg
 
 serverdir=$basedir"server/"
 moddir=$serverdir"mods/"
@@ -9,117 +8,106 @@ smthchanged=false
 multimcversion=`cat multimc.version`
 multimcarchivename=enderiotest_multimc_rev$multimcversion
 multimcmodsdir=$basedir"multimc/.minecraft/mods/"
-
-echo $multimcmodsdir
-echo $multimcarchivname
-echo $(expr $multimcversion + 1)
+minecraftport=`grep server-port server/server.properties|cut -d'=' -f2 | tr -d '\040\011\012\015'`
 
 
-echo "Parse API data to find file name of latest EnderCore build"
-enderCoreFile=$(curl -s http://ci.tterrag.com/job/EnderCore-1.11/lastSuccessfulBuild/api/json | jq -r '.artifacts[3].fileName')
-enderCoreURL="http://ci.tterrag.com/job/EnderCore-1.11/lastSuccessfulBuild/artifact/build/libs/$enderCoreFile"
-echo "Check if EnderCore is up to date"
-if [ -e $enderCoreFile ]; then
-  # If it is, do nothing
-  echo "EnderCore is up to date!"
-else
-  # Otherwise, delete and redownload
+mod_entries=""
 
-  smthchanged=true
-  # Remove old bot jar
-  echo "Deleting old EnderCore jar"
-  rm -f EnderCore-*
-  # Download new bot jar
-  echo "Downloading new file: $enderCoreFile"
-  wget $enderCoreURL
-  echo "deleting mod "$moddir"EnderCore-*"
-  echo "deleting multimcmod" $multimcmodsdir"EnderCore-*"
-  rm -f "$moddir"EnderCore-*
-  rm -f "$multimcmodsdir"EnderCore-*
-  echo "copy mod"
-  cp $enderCoreFile $moddir
-  cp $enderCoreFile $multimcmodsdir
-fi
+for file in config/jarconfig.d/*.cfg; do
+    [ -e "$file" ] || continue
+    echo "$file"
+	
+	source $file
+	# $name
+	# $jarPrefix
+	# $artifact
+	# $jenkinsURL
+	
+	echo "Parse API data to find file name of latest EnderCore build"
+	file=$(curl -s $jenkinsURL/api/json | jq -r '.artifacts['$artifact'].fileName')
+	url=$jenkinsURL"artifact/build/libs/$file"
+	
+	modEntries=$modEntries'<li><a href=\"'$url'\">'$file'</a></li>'
+	
+	echo "Check if $name is up to date"
+	if [ -e "tmp"/$file ]; then
+		echo "$name is up to date!"
+	else
+		smthchanged=true
+		# Remove old bot jar
+		echo "Deleting old $name jar"
+		rm -f tmp/$jarPrefix
+		# Download new bot jar
+		echo "Downloading new file: $enderCoreFile"
+		wget $url -P tmp
+		
+		  echo "deleting $moddir $jarPrefix"
+		  rm -f "$moddir $jarPrefix"
+		  echo "deleting $multimcmodsdir $jarPrefix"
+		  rm -f "$multimcmodsdir $jarPrefix"
+		
+		echo "Copy $file into server to mods"
+		cp tmp/$file $moddir
+		echo "Copy $file into server to multimc"
+		cp tmp/$file $multimcmodsdir
+  fi
+done
 
-
-
-echo "Parse API data to find file name of latest EnderIO build"
-enderioFile=$(curl -s http://ci.tterrag.com/job/EnderIO-Modules/job/EnderIO-Hourly/lastSuccessfulBuild/api/json | jq -r '.artifacts[1].fileName')
-enderioURL=http://ci.tterrag.com/job/EnderIO-Modules/job/EnderIO-Hourly/lastSuccessfulBuild/artifact/build/libs/$enderioFile
-
-echo "Check if EnderIO is up to date"
-if [ -e $enderioFile ]; then
-  # If it is, do nothing
-  echo "EnderIO up to date!"
-else
-  # Otherwise, delete and redownload
-
-  smthchanged=true
-  # Remove old bot jar
-  echo "Deleting old EnderIO jar"
-  rm -f EnderIO-*
-
-  # Download new bot jar
-  echo "Downloading new file: $filename"
-  wget $enderioURL
-  echo "deleting mod "$moddir"EnderIO-*"
-  rm -f "$moddir"EnderIO-*
-  rm -f "$multimcmodsdir"EnderIO-*
-  echo "copy mod"
-  cp $enderioFile $moddir
-  cp $enderioFile $multimcmodsdir
-fi
-
-
-
-# Start new bot instance
-echo "Starting screen"
-
-if [ "$smthchanged" = true ] ; then
-    echo 'Be careful not to fall off!'
-fi
+echo $modEntries
 
 if ! screen -list | grep -q "mcscreen"; then
   echo "No current Minecraft instance found"
   screen -dmS mcscreen
 fi
-
+ echo "checking minecraft port $minecraftport"
+nc -z localhost $minecraftport
+ncReturn=$?
 if [ "$smthchanged" = true ] ; then
 
-  echo $(expr $multimcversion + 1) > multimc.version
 
-  zip -r $multimcarchivename multimc
-  rm -f "$webroot"*.zip
-  mv "$multimcarchivename".zip $webroot
+	echo $(expr $multimcversion + 1) > multimc.version
 
-  echo "Terminating current Minecraft instance"
-  screen -S mcscreen -p 0 -X stuff "say installed new Ender-IO/Core version, restarting server in 30 seconds ^M"
+	
+	rm -f "$webroot"*.zip
+	zip -r "$webroot/$multimcarchivename" multimc	
+  
+	if [ $ncReturn -eq 0 ]; then
+		echo "server is running"
+		echo "Terminating current Minecraft instance"
+		
+		screen -S mcscreen -p 0 -X stuff "say installed new Ender-IO/Core version, restarting server in 30 seconds ^M"
+		sleep 10 &
+		wait %1
+		screen -S mcscreen -p 0 -X stuff "say 20 seconds remaining ^M"
+		sleep 10 &
+		screen -S mcscreen -p 0 -X stuff "say 10 seconds remaining ^M"
 
-  sleep 10 &
-  wait %1
-  screen -S mcscreen -p 0 -X stuff "say 20 seconds remaining ^M"
+		COUNTER=9
+			 while [  $COUNTER -gt 0 ]; do
+			  screen -S mcscreen -p 0 -X stuff "say ... $COUNTER ^M"
+			  sleep 1 &
+			  wait %1
 
+				 let COUNTER=COUNTER-1
+			 done
 
-  sleep 10 &
-
-screen -S mcscreen -p 0 -X stuff "say 10 seconds remaining ^M"
-
-	COUNTER=9
-         while [  $COUNTER -gt 0 ]; do
-	      screen -S mcscreen -p 0 -X stuff "say ... $COUNTER ^M"
-	      sleep 1 &
-	      wait %1
-
-             let COUNTER=COUNTER-1
-         done
-
-  screen -S mcscreen -p 0 -X stuff "stop^M"
-  sleep 10 &
-  wait %1
-  screen -S mcscreen -p 0 -X stuff 'cd '$serverdir'^M'
-  screen -S mcscreen -p 0 -X stuff 'java -jar forge-1.11.2-13.20.1.2588-universal.jar nogui ^M'
-
-  mufile="$multimcarchivename".zip
-  awk  '{gsub(/\$mufile/,"'$mufile'");gsub(/\$enderioURL/,"'$enderioURL'");gsub(/\$enderioFile/,"'$enderioFile'");gsub(/\$enderCoreURL/,"'$enderCoreURL'");gsub(/\$enderCoreFile/,"'$enderCoreFile'")}1' $basedir'html/index.php' > $webroot'index.php'
+		screen -S mcscreen -p 0 -X stuff "stop^M"
+		sleep 10 &
+		wait %1
+	else
+		echo "s"
+	fi
 fi
+
+if [ $ncReturn -eq 1 ]; then
+  screen -S mcscreen -p 0 -X stuff 'cd '$serverdir'^M'
+  echo "running command: $runCommand"
+  screen -S mcscreen -p 0 -X stuff 'java -jar forge-1.11.2-13.20.1.2588-universal.jar nogui ^M'
+  screen -S mcscreen -p 0 -X eval "stuff '$runCommand'\015"
+fi
+
+	mufile="$multimcarchivename".zip
+	eval "awk '{gsub(/"'\$mufile'"/,\""$mufile"\");gsub(/"'\$modEntries'"/,\""$modEntries"\")}1' html/index.php >> "$webroot"index.php"
+
+
 

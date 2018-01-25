@@ -120,8 +120,7 @@ if($serverSock !== FALSE)
 	<li><a href="https://minecraft.curseforge.com/projects/cofhcore/files/2469613/download">CoFHCore-1.11.2-4.2.8.16-universal.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/baubles/files/2458753/download">Baubles-1.11-1.4.6.jar</a></li>
 
-	<li><a href="$enderCoreURL">$enderCoreFile</a></li>
-	<li><a href="$enderioURL">$enderioFile</a></li>
+	$modEntries
           </ul>
           <p><i>Please note that the links are generated automatically. If your jar files are outdated, you can visit this page.</i></p>
         </div>
