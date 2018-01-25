@@ -24,9 +24,9 @@ for file in config/jarconfig.d/*.cfg; do
 	# $jenkinsURL
 	
 	echo "Parse API data to find file name of latest EnderCore build"
-	file=$(curl -s $jenkinsURL/api/json | jq -r '.artifacts['$artifact'].fileName')
-	url=$jenkinsURL"artifact/build/libs/$file"
-	
+	file=` echo $(curl -s $jenkinsURL/api/json | jq -r '.artifacts['$artifact'].fileName') | xargs`
+	url=`echo $jenkinsURL"artifact/build/libs/$file" | xargs`
+	jarPrefix=`echo $jarPrefix | xargs`
 	modEntries=$modEntries'<li><a href=\"'$url'\">'$file'</a></li>'
 	
 	echo "Check if $name is up to date"
