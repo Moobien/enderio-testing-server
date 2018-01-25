@@ -41,10 +41,10 @@ for file in config/jarconfig.d/*.cfg; do
 		echo "Downloading new file: $enderCoreFile"
 		wget $url -P tmp
 		
-		  echo "deleting $moddir $jarPrefix"
-		  rm -f "$moddir $jarPrefix"
-		  echo "deleting $multimcmodsdir $jarPrefix"
-		  rm -f "$multimcmodsdir $jarPrefix"
+		echo "deleting $moddir $jarPrefix"
+		rm -f "$moddir""$jarPrefix"
+		echo "deleting""$multimcmodsdir $jarPrefix"
+		rm -f "$multimcmodsdir""$jarPrefix"
 		
 		echo "Copy $file into server to mods"
 		cp tmp/$file $moddir
@@ -60,8 +60,6 @@ if ! screen -list | grep -q "mcscreen"; then
   screen -dmS mcscreen
 fi
  echo "checking minecraft port $minecraftport"
-nc -z localhost $minecraftport
-ncReturn=$?
 if [ "$smthchanged" = true ] ; then
 
 
@@ -100,6 +98,8 @@ if [ "$smthchanged" = true ] ; then
 	fi
 	cp -r html/* $webroot
 fi
+nc -z localhost $minecraftport
+ncReturn=$?
 
 if [ $ncReturn -eq 1 ]; then
   screen -S mcscreen -p 0 -X stuff 'cd '$serverdir'^M'
