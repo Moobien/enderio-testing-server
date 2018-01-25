@@ -9,7 +9,7 @@ smthchanged=false
 multimcversion=`cat $basedir"multimc.version"`
 multimcarchivename=enderiotest_multimc_rev$multimcversion
 multimcmodsdir=$basedir"multimc/.minecraft/mods/"
-minecraftport=`grep server-port server/server.properties|cut -d'=' -f2 | tr -d '\040\011\012\015'`
+minecraftport=`grep server-port $basedir"server/server.properties" |cut -d'=' -f2 | tr -d '\040\011\012\015'`
 
 
 mod_entries=""
