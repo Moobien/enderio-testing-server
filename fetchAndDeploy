@@ -30,7 +30,7 @@ for file in config/jarconfig.d/*.cfg; do
 	modEntries=$modEntries'<li><a href=\"'$url'\">'$file'</a></li>'
 	
 		echo "deleting $moddir""$jarPrefix"
-		echo "deleting""$multimcmodsdir $jarPrefix"
+		echo "deleting""$multimcmodsdir""$jarPrefix"
 		
 	echo "Check if $name is up to date"
 	if [ -e "tmp"/$file ]; then
