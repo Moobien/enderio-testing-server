@@ -110,3 +110,36 @@ ul{
     border: none;
   }
 }
+
+#discord{
+  width: 9.7rem;
+  height: 2rem;
+  background-color: #7388D9;
+  display: flex;
+  align-items: center;
+  color: $white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.90rem;
+  margin: $default-margin/2 0;
+  @include border-radius($default-border-radius);
+  @include no-select;
+
+  #discord-logo{
+    background-color: #57669E;
+    padding: 0.5rem;
+    @include border-radius-specific($default-border-radius, 0, 0, $default-border-radius);
+
+    img{
+      width: 20px; 
+    }
+  }
+
+  a{
+    color: $white;
+    margin-left: 0.3rem;
+  }
+  a:hover{
+    text-decoration: underline;
+  }
+}

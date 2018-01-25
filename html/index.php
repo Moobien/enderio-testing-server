@@ -77,6 +77,14 @@ if($serverSock !== FALSE)
           <p>
             Play and have fun, but remember to report the bugs you discover.<br />
             All bugs should be reported in #server-bugreports at EnderIO's Discord server.
+            <div id="discord">
+              <div id="discord-logo">
+                <img src="assets/discord.png" />
+              </div>
+              <div>
+                <a href="http://discord.gg/sgYk3Jr">Join Discord</a>
+              </div>
+            </div>
           </p>
          <!-- <p class="callout">
             <strong>Before reporting any bugs,</strong> please search and familiarise yourself with the issues that have already been reported.
