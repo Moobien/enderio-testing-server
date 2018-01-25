@@ -58,6 +58,9 @@ done
 
 echo $modEntries
 
+nc -z localhost $minecraftport
+ncReturn=$?
+
 if ! screen -list | grep -q "mcscreen"; then
   echo "No current Minecraft instance found"
   screen -dmS mcscreen
