@@ -6,7 +6,7 @@ source $basedir/config/base.cfg
 serverdir=$basedir"server/"
 moddir=$serverdir"mods/"
 smthchanged=false
-multimcversion=`cat multimc.version`
+multimcversion=`cat $basedir"multimc.version"`
 multimcarchivename=enderiotest_multimc_rev$multimcversion
 multimcmodsdir=$basedir"multimc/.minecraft/mods/"
 minecraftport=`grep server-port server/server.properties|cut -d'=' -f2 | tr -d '\040\011\012\015'`
@@ -34,13 +34,13 @@ for file in config/jarconfig.d/*.cfg; do
 		echo "deleting""$multimcmodsdir""$jarPrefix"
 		
 	echo "Check if $name is up to date"
-	if [ -e "tmp"/$file ]; then
+	if [ -e $basedir"tmp"/$file ]; then
 		echo "$name is up to date!"
 	else
 		smthchanged=true
 		# Remove old bot jar
 		echo "Deleting old $name jar"
-		rm -f tmp/$jarPrefix
+		rm -f $basedir"tmp/"$jarPrefix
 		# Download new bot jar
 		echo "Downloading new file: $enderCoreFile"
 		wget $url -P tmp
@@ -51,9 +51,9 @@ for file in config/jarconfig.d/*.cfg; do
 		rm -f $multimcmodsdir$jarPrefix
 		
 		echo "Copy $file into server to mods"
-		cp tmp/$file $moddir
+		cp $basedir"tmp/"$file $moddir
 		echo "Copy $file into server to multimc"
-		cp tmp/$file $multimcmodsdir
+		cp $basedir"tmp/"$file $multimcmodsdir
   fi
 done
 
@@ -70,7 +70,7 @@ fi
 if [ "$smthchanged" = true ] ; then
 
 
-	echo $(expr $multimcversion + 1) > multimc.version
+	echo $(expr $multimcversion + 1) > $basedir"/ultimc.version"
 
 	
 	rm -Rf "$webroot"*
@@ -103,7 +103,7 @@ if [ "$smthchanged" = true ] ; then
 	else
 		echo "s"
 	fi
-	cp -r html/* $webroot
+	cp -r $basedir"html/*" $webroot
 fi
 nc -z localhost $minecraftport
 ncReturn=$?
@@ -117,7 +117,7 @@ fi
 
 	mufile="$multimcarchivename".zip
 	eval "awk '{gsub(/"'\$mufile'"/,\""$mufile"\");gsub(/"'\$modEntries'"/,\""$modEntries"\")}1' html/index.php > "$webroot"index.php"
-	sass html/css/util.scss $webroot/css/util.css
-	sass html/css/main.scss $webroot/css/main.css
+	sass $basedir"html/css/util.scss" $webroot/css/util.css
+	sass $basedir"html/css/main.scss" $webroot/css/main.css
 
 
