@@ -36,6 +36,7 @@ if($serverSock !== FALSE)
 
 <html>
   <head>
+  <title>EnderIO Test Server</title>
     <link rel="stylesheet" href="css/main.css" />
   </head>
   <body>
