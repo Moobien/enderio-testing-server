@@ -1,15 +1,16 @@
 #!/bin/bash
 
 basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source $basedir"config/base.cfg"
-echo "source "$basedir"config/base.cfg"
-serverdir=$basedir"server/"
+cd $basedir
+source "config/base.cfg"
+echo "source ""config/base.cfg"
+serverdir="server/"
 moddir=$serverdir"mods/"
 smthchanged=false
-multimcversion=`cat $basedir"multimc.version"`
+multimcversion=`cat "multimc.version"`
 multimcarchivename=enderiotest_multimc_rev$multimcversion
-multimcmodsdir=$basedir"multimc/.minecraft/mods/"
-minecraftport=`grep server-port $basedir"server/server.properties" |cut -d'=' -f2 | tr -d '\040\011\012\015'`
+multimcmodsdir="multimc/.minecraft/mods/"
+minecraftport=`grep server-port "server/server.properties" |cut -d'=' -f2 | tr -d '\040\011\012\015'`
 
 
 mod_entries=""
@@ -34,13 +35,13 @@ for file in config/jarconfig.d/*.cfg; do
 		echo "deleting""$multimcmodsdir""$jarPrefix"
 		
 	echo "Check if $name is up to date"
-	if [ -e $basedir"tmp"/$file ]; then
+	if [ -e "tmp"/$file ]; then
 		echo "$name is up to date!"
 	else
 		smthchanged=true
 		# Remove old bot jar
 		echo "Deleting old $name jar"
-		rm -f $basedir"tmp/"$jarPrefix
+		rm -f "tmp/"$jarPrefix
 		# Download new bot jar
 		echo "Downloading new file: $enderCoreFile"
 		wget $url -P tmp
@@ -51,9 +52,9 @@ for file in config/jarconfig.d/*.cfg; do
 		rm -f $multimcmodsdir$jarPrefix
 		
 		echo "Copy $file into server to mods"
-		cp $basedir"tmp/"$file $moddir
+		cp "tmp/"$file $moddir
 		echo "Copy $file into server to multimc"
-		cp $basedir"tmp/"$file $multimcmodsdir
+		cp "tmp/"$file $multimcmodsdir
   fi
 done
 
@@ -70,11 +71,11 @@ fi
 if [ "$smthchanged" = true ] ; then
 
 
-	echo $(expr $multimcversion + 1) > $basedir"/ultimc.version"
+	echo $(expr $multimcversion + 1) > "/ultimc.version"
 
 	
 	rm -Rf "$webroot"*
-	zip -r $webroot/$multimcarchivename $basedir"multimc"
+	zip -r $webroot/$multimcarchivename "multimc"
   
 	if [ $ncReturn -eq 0 ]; then
 		echo "server is running"
@@ -103,7 +104,7 @@ if [ "$smthchanged" = true ] ; then
 	else
 		echo "s"
 	fi
-	cp -r $basedir"html/*" $webroot
+	cp -r "html/*" $webroot
 fi
 nc -z localhost $minecraftport
 ncReturn=$?
@@ -117,7 +118,7 @@ fi
 
 	mufile="$multimcarchivename".zip
 	eval "awk '{gsub(/"'\$mufile'"/,\""$mufile"\");gsub(/"'\$modEntries'"/,\""$modEntries"\")}1' html/index.php > "$webroot"index.php"
-	sass $basedir"html/css/util.scss" $webroot/css/util.css
-	sass $basedir"html/css/main.scss" $webroot/css/main.css
+	sass "html/css/util.scss" $webroot/css/util.css
+	sass "html/css/main.scss" $webroot/css/main.css
 
 
