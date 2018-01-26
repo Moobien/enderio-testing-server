@@ -71,7 +71,7 @@ fi
 if [ "$smthchanged" = true ] ; then
 
 
-	echo $(expr $multimcversion + 1) > "/ultimc.version"
+	echo $(expr $multimcversion + 1) > "/multimc.version"
 
 	
 	rm -Rf $webroot"*"
