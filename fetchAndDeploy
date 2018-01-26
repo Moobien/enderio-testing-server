@@ -74,8 +74,8 @@ if [ "$smthchanged" = true ] ; then
 	echo $(expr $multimcversion + 1) > "/ultimc.version"
 
 	
-	rm -Rf "$webroot"*
-	zip -r $webroot/$multimcarchivename "multimc"
+	rm -Rf $webroot"*"
+	zip -r $webroot$multimcarchivename "multimc"
   
 	if [ $ncReturn -eq 0 ]; then
 		echo "server is running"
