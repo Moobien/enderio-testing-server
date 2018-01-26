@@ -104,7 +104,7 @@ if [ "$smthchanged" = true ] ; then
 	else
 		echo "s"
 	fi
-	cp -r "html/*" $webroot
+	cp -r html/* $webroot
 fi
 nc -z localhost $minecraftport
 ncReturn=$?
