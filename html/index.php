@@ -107,7 +107,6 @@ if($serverSock !== FALSE)
         <li><a href="https://minecraft.curseforge.com/projects/chameleon/files/2419176/download">Chameleon-1.11.2-3.1.0.jar</a></li>
         <li><a href="https://minecraft.curseforge.com/projects/compatlayer/files/2511880/download">compatlayer-1.11.2-0.3.0.jar</a></li>
         <li><a href="https://minecraft.curseforge.com/projects/the-middle-torch/files/2514321/download">middletorch-5.0.7.jar</a></li>
-	<li><a href="https://minecraft.curseforge.com/projects/gravestone-mod-graves/files/2458100/download">GraveStone-1.11.2-Graves-1.0.10.1.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/refined-storage/files/2450975/download">refinedstorage-1.4.20.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/ftblib/files/2422883/download">FTBLib-1.1x-3.6.5.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/ftb-utilities/files/2422884/download">FTBUtilities-1.1x-3.6.5.jar</a></li>
@@ -131,6 +130,7 @@ if($serverSock !== FALSE)
 	<li><a href="https://minecraft.curseforge.com/projects/aroma1997s-dimensional-world/files/2412522/download">Aroma1997s-Dimensional-World-1.11.2-1.3.0.0.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/aroma1997core/files/2412506/download">Aroma1997Core-1.11.2-1.2.0.0.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/ender-zoo/files/2427513/download">EnderZoo-1.11.2-1.3.0.47.jar</a></li>
+	<li><a href="https://minecraft.curseforge.com/projects/openblocks/files/2514378/download">OpenBlocks-1.11.2-1.7.4.jar</a></li>
 	
 	
 	$modEntries
