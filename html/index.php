@@ -133,7 +133,7 @@ if($serverSock !== FALSE)
 	<li><a href="https://minecraft.curseforge.com/projects/openblocks/files/2514378/download">OpenBlocks-1.11.2-1.7.4.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/chisel/files/2511502/download">Chisel-MC1.11.2-0.1.1.31.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/ctm/files/2485008/download">CTM-MC1.11.2-0.2.3.14.jar</a></li>
-	<li><a href="https://minecraft.curseforge.com/projects/mod-name-tooltip/files/2486868/download">modnametooltip_1.12.2-1.10.0.jar</a></li>
+	<li><a href="https://minecraft.curseforge.com/projects/mod-name-tooltip/files/2408205/download">modnametooltip_1.11-1.7.1.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/openmodslib/files/2514374/download">OpenModsLib-1.11.2-0.11.4.jar</a></li>
 	
 	
