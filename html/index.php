@@ -131,6 +131,8 @@ if($serverSock !== FALSE)
 	<li><a href="https://minecraft.curseforge.com/projects/aroma1997core/files/2412506/download">Aroma1997Core-1.11.2-1.2.0.0.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/ender-zoo/files/2427513/download">EnderZoo-1.11.2-1.3.0.47.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/openblocks/files/2514378/download">OpenBlocks-1.11.2-1.7.4.jar</a></li>
+	<li><a href="https://minecraft.curseforge.com/projects/chisel/files/2511502/download">Chisel-MC1.11.2-0.1.1.31.jar</a></li>
+	<li><a href="https://minecraft.curseforge.com/projects/ctm/files/2485008/download">CTM-MC1.11.2-0.2.3.14.jar</a></li>
 	
 	
 	$modEntries
