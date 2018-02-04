@@ -129,7 +129,8 @@ if($serverSock !== FALSE)
 	<li><a href="https://minecraft.curseforge.com/projects/rftools/files/2511881/download">rftools-1.1x-7.16.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/mcjtylib/files/2511876/download">mcjtylib-1.1x-2.5.1.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/aroma1997s-dimensional-world/files/2412522/download">Aroma1997s-Dimensional-World-1.11.2-1.3.0.0.jar</a></li>
-
+	<li><a href="https://minecraft.curseforge.com/projects/aroma1997core/files/2412506/download">Aroma1997Core-1.11.2-1.2.0.0.jar</a></li>
+	
 	$modEntries
           </ul>
           <p><i>Please note that the links are generated automatically. If your jar files are outdated, you can visit this page.</i></p>
