@@ -112,7 +112,7 @@ ncReturn=$?
 if [ $ncReturn -eq 1 ]; then
   screen -S mcscreen -p 0 -X stuff 'cd '$serverdir'^M'
   echo "running command: $runCommand"
-  screen -S mcscreen -p 0 -X stuff 'java -jar forge-1.11.2-13.20.1.2588-universal.jar nogui ^M'
+  screen -S mcscreen -p 0 -X stuff 'java -jar forge-1.11.2-13.20.1.2588-universal.jar nogui -Xms5G -Xmx5G -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:+CMSIncrementalMode -XX:+CMSIncrementalPacing -XX:+CMSParallelRemarkEnabled -XX:MaxGCPauseMillis=50 -XX:+DisableExplicitGC -XX:+AggressiveOpts -XX:+UseFastAccessorMethods -XX:+UseBiasedLocking -XX:TargetSurvivorRatio=90 ^M'
   screen -S mcscreen -p 0 -X eval "stuff '$runCommand'\015"
 fi
 
