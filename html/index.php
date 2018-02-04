@@ -120,6 +120,14 @@ if($serverSock !== FALSE)
 	<li><a href="https://minecraft.curseforge.com/projects/thermal-foundation/files/2453220/download">ThermalFoundation-1.11.2-2.2.5.16-universal.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/cofhcore/files/2469613/download">CoFHCore-1.11.2-4.2.8.16-universal.jar</a></li>
 	<li><a href="https://minecraft.curseforge.com/projects/baubles/files/2458753/download">Baubles-1.11-1.4.6.jar</a></li>
+	<li><a href="https://minecraft.curseforge.com/projects/chisels-bits/files/2483469/download">chiselsandbits-13.14.jar</a></li>
+	<li><a href="https://minecraft.curseforge.com/projects/inventory-tweaks/files/2431301/download">InventoryTweaks-1.62.jar</a></li>
+	<li><a href="https://minecraft.curseforge.com/projects/mystical-agriculture/files/2487658/download">mysticalagriculture-1.11.2-1.5.9.jar</a></li>
+	<li><a href="https://minecraft.curseforge.com/projects/zerocore/files/2482155/download">zerocore-1.11.2-0.1.1.0.jar</a></li>
+	<li><a href="https://minecraft.curseforge.com/projects/extreme-reactors/files/2525277/download">ExtremeReactors-1.11.2-0.4.5.46.jar</a></li>
+	<li><a href="https://minecraft.curseforge.com/projects/actually-additions/files/2435257/download">ActuallyAdditions-1.11.2-r110.jar</a></li>
+	<li><a href="https://minecraft.curseforge.com/projects/rftools/files/2511881/download">rftools-1.1x-7.16.jar</a></li>
+	<li><a href="https://minecraft.curseforge.com/projects/mcjtylib/files/2511876/download">mcjtylib-1.1x-2.5.1.jar</a></li>
 
 	$modEntries
           </ul>

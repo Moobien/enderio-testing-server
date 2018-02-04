@@ -70,17 +70,13 @@ fi
  echo "checking minecraft port $minecraftport"
 if [ "$smthchanged" = true ] ; then
 
-
-	echo $(expr $multimcversion + 1) > multimc.version
-
-	
 	rm -Rf $webroot"*"
 	zip -r $webroot$multimcarchivename "multimc"
-  
+
 	if [ $ncReturn -eq 0 ]; then
 		echo "server is running"
 		echo "Terminating current Minecraft instance"
-		
+
 		screen -S mcscreen -p 0 -X stuff "say installed new Ender-IO/Core version, restarting server in 30 seconds ^M"
 		sleep 10 &
 		wait %1
@@ -105,6 +101,9 @@ if [ "$smthchanged" = true ] ; then
 		echo "s"
 	fi
 	cp -r html/* $webroot
+        mufile="$multimcarchivename".zip
+        eval "awk '{gsub(/"'\$mufile'"/,\""$mufile"\");gsub(/"'\$modEntries'"/,\""$modEntries"\")}1' html/index.php > "$webroot"index.php"
+	echo $(expr $multimcversion + 1) > multimc.version
 fi
 nc -z localhost $minecraftport
 ncReturn=$?
@@ -116,8 +115,6 @@ if [ $ncReturn -eq 1 ]; then
   screen -S mcscreen -p 0 -X eval "stuff '$runCommand'\015"
 fi
 
-	mufile="$multimcarchivename".zip
-	eval "awk '{gsub(/"'\$mufile'"/,\""$mufile"\");gsub(/"'\$modEntries'"/,\""$modEntries"\")}1' html/index.php > "$webroot"index.php"
 	sass "html/css/util.scss" $webroot"css/util.css"
 	sass "html/css/main.scss" $webroot"css/main.css"
 

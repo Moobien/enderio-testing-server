@@ -1,4 +1,9 @@
 server/*
+!server/config/**
+server/config/Chikachi/discordintegration.json
+!server/local/**
+!server/server-icon.png
+!server/server.properties
 tmp/*
 multimc/*
 webroot
