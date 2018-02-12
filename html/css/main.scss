@@ -12,6 +12,13 @@ body{
   background-color: $background-color;
 }
 
+#link {
+    font-family: monospace;
+	background-color:#949494;
+	padding:8px;
+	margin:10px;
+}
+
 a{
   text-decoration: none;
 }
