@@ -136,6 +136,14 @@ XML editor will display that as tooltips when editing this file.
     </crafting>
   </recipe>
 
+  <recipe name="Pulsating Crystal, casting">
+    <casting>
+      <input name="PULSATING_IRON_NUGGET" amount="8"/>
+      <cast name="gemDiamond" consumed="true"/>
+      <output name="PULSATING_CRYSTAL"/>
+    </casting>
+  </recipe>
+
   <recipe name="Vibrant Crystal" required="true">
     <crafting>
       <grid>
@@ -145,6 +153,14 @@ XML editor will display that as tooltips when editing this file.
       </grid>
       <output name="VIBRANT_CRYSTAL"/>
     </crafting>
+  </recipe>
+
+  <recipe name="Vibrant Crystal, casting">
+    <casting>
+      <input name="VIBRANT_ALLOY_NUGGET" amount="8"/>
+      <cast name="gemEmerald" consumed="true"/>
+      <output name="VIBRANT_CRYSTAL"/>
+    </casting>
   </recipe>
 
   <recipe name="Dark Grinding Ball" required="true">
@@ -253,20 +269,6 @@ XML editor will display that as tooltips when editing this file.
     </casting>
   </recipe>
 
-  <recipe name="Iron Dust, Smelting" required="true">
-    <smelting>
-      <input name="POWDER_IRON"/>
-      <output name="minecraft:iron_ingot"/>
-    </smelting>
-  </recipe>
-
-  <recipe name="Gold Dust, Smelting" required="true">
-    <smelting>
-      <input name="POWDER_GOLD"/>
-      <output name="minecraft:gold_ingot"/>
-    </smelting>
-  </recipe>
-
   <recipe name="Ender Pearl Nuggets" required="true">
     <crafting>
       <shapeless>
@@ -310,31 +312,12 @@ XML editor will display that as tooltips when editing this file.
   <recipe name="Machine Dye">
     <crafting>
       <grid>
-        <item name="dustLapis"/><item name="dustQuartz"/><item name="ORGANIC_GREEN_DYE"/>
-        <item name="dustQuartz"/><item name="ORGANIC_BLACK_DYE"/><item name="dustQuartz"/>
-        <item name="ORGANIC_GREEN_DYE"/><item name="dustQuartz"/><item name="dustLapis"/>
+        <item name="dustLapis"/><item name="POWDER_QUARTZ"/><item name="ORGANIC_GREEN_DYE"/>
+        <item name="POWDER_QUARTZ"/><item name="ORGANIC_BLACK_DYE"/><item name="POWDER_QUARTZ"/>
+        <item name="ORGANIC_GREEN_DYE"/><item name="POWDER_QUARTZ"/><item name="dustLapis"/>
       </grid>
       <output name="dyeMachine" amount="9"/>
     </crafting>
-  </recipe>
-
-  <recipe name="Machine Dye, Mirrored">
-    <crafting>
-      <grid>
-        <item name="ORGANIC_GREEN_DYE"/><item name="dustQuartz"/><item name="dustLapis"/>
-        <item name="dustQuartz"/><item name="ORGANIC_BLACK_DYE"/><item name="dustQuartz"/>
-        <item name="dustLapis"/><item name="dustQuartz"/><item name="ORGANIC_GREEN_DYE"/>
-      </grid>
-      <output name="dyeMachine" amount="9"/>
-    </crafting>
-  </recipe>
-
-  <recipe name="Quartz Dust">
-    <sagmilling bonus="chance_only" energy="2400">
-      <input name="gemQuartz"/>
-      <output name="dustQuartz"/>
-      <output name="dustQuartz" chance=".1"/>
-    </sagmilling>
   </recipe>
 
   <recipe name="Gear, Wood" required="true">
@@ -529,9 +512,20 @@ XML editor will display that as tooltips when editing this file.
     </crafting>
   </recipe>
 
+  <recipe name="Dark Steel Door" required="true">
+    <crafting>
+      <grid size="2x3">
+        <item name="DARK_STEEL"/><item name="DARK_STEEL"/>
+        <item name="DARK_STEEL"/><item name="DARK_STEEL"/>
+        <item name="DARK_STEEL"/><item name="DARK_STEEL"/>
+      </grid>
+      <output name="item:enderio:block_dark_steel_door" amount="3"/>
+    </crafting>
+  </recipe>
+
   <recipe name="Bread" required="true">
     <smelting exp="0.35">
-      <input name="dustWheat"/>
+      <input name="FLOUR"/>
       <output name="minecraft:bread"/>
     </smelting>
   </recipe>
@@ -547,28 +541,28 @@ XML editor will display that as tooltips when editing this file.
 
   <recipe name="Copper" required="false">
     <smelting>
-      <input name="enderio:itemPowderIngot:3"/>
+      <input name="dustCopper"/>
       <output name="ingotCopper"/>
     </smelting>
   </recipe>
 
   <recipe name="Tin" required="false">
     <smelting>
-      <input name="enderio:itemPowderIngot:4"/>
+      <input name="dustTin"/>
       <output name="ingotTin"/>
     </smelting>
   </recipe>
 
   <recipe name="Ardite" required="false">
     <smelting>
-      <input name="enderio:itemPowderIngot:9"/>
+      <input name="dustArdite"/>
       <output name="ingotArdite"/>
     </smelting>
   </recipe>
 
   <recipe name="Cobalt" required="false">
     <smelting>
-      <input name="enderio:itemPowderIngot:10"/>
+      <input name="dustCobalt"/>
       <output name="ingotCobalt"/>
     </smelting>
   </recipe>

@@ -70,7 +70,7 @@ if($serverSock !== FALSE)
                           <?php
                           echo $onlinePlayers.'/'.$maxPlayers;
                           ?> player(s) online.</p>
-              <p>mc.joduwei.com</p>
+              <p>server.enderio.com</p>
             </div>
           </div>
         </div>
