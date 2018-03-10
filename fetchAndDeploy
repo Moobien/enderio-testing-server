@@ -13,7 +13,8 @@ multimcmodsdir="multimc/.minecraft/mods/"
 minecraftport=`grep server-port "server/server.properties" |cut -d'=' -f2 | tr -d '\040\011\012\015'`
 
 
-mod_entries=""
+modEntries=""
+modPackEntries=""
 
 for file in config/jarconfig.d/*.cfg; do
     [ -e "$file" ] || continue
@@ -24,13 +25,17 @@ for file in config/jarconfig.d/*.cfg; do
 	# $jarPrefix
 	# $artifact
 	# $jenkinsURL
-
+	# $versionRegex
+	
 	echo "Parse API data to find file name of latest EnderCore build"
 	file=` echo $(curl -s $jenkinsURL/api/json | jq -r '.artifacts['$artifact'].fileName') | xargs`
 	url=`echo $jenkinsURL"/artifact/build/libs/$file" | xargs`
 	jarPrefix=`echo $jarPrefix | xargs`
 	modEntries=$modEntries'<li><a href=\"'$url'\">'$file'</a></li>'
-
+	
+	version=`perl -e 'if ($ARGV[0] =~ $versionRegex) { $a = $1; $a =~ s/-//g; print lc $a }' $file`
+	
+	modPackEntries=$name','$version','$url',mod\n'
 		echo "deleting $moddir""$jarPrefix"
 		echo "deleting""$multimcmodsdir""$jarPrefix"
 
