@@ -100,7 +100,7 @@ if($serverSock !== FALSE)
           <p>
             We automatically generate an always up-to-date zip for MultiMC that contains all the dependencies.
           </p>
-          <p><strong><a id="mufile" href="$mufile">$mufile</a></strong></p>
+          <p><strong><a id="mufile" href="enderiotest_multimc.zip">enderiotest_multimc.zip</a></strong></p>
                   <br />
           <p><i>MultiMC is a free, open source launcher for Minecraft. It allows you to have multiple separated instances of Minecraft. Find out more about MultiMC at <a href="https://multimc.org/#Download">the MultiMC project page</a></i><br /></p>
                   <p>Getting started: <a href="https://github.com/MultiMC/MultiMC5/wiki/Getting-Started">https://github.com/MultiMC/MultiMC5/wiki/Getting-Started</a></p><br />

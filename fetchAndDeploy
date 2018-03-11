@@ -7,9 +7,6 @@ echo "source ""config/base.cfg"
 serverdir="server/"
 moddir=$serverdir"mods/"
 smthchanged=false
-multimcversion=`cat "multimc.version"`
-multimcarchivename=enderiotest_multimc_rev$multimcversion
-multimcmodsdir="multimc/.minecraft/mods/"
 minecraftport=`grep server-port "server/server.properties" |cut -d'=' -f2 | tr -d '\040\011\012\015'`
 
 
@@ -26,18 +23,16 @@ for file in config/jarconfig.d/*.cfg; do
 	# $artifact
 	# $jenkinsURL
 	# $versionRegex
-	
+
 	echo "Parse API data to find file name of latest EnderCore build"
 	file=` echo $(curl -s $jenkinsURL/api/json | jq -r '.artifacts['$artifact'].fileName') | xargs`
 	url=`echo $jenkinsURL"/artifact/build/libs/$file" | xargs`
 	jarPrefix=`echo $jarPrefix | xargs`
 	modEntries=$modEntries'<li><a href=\"'$url'\">'$file'</a></li>'
-	
-	version=`perl -e 'if ($ARGV[0] =~ $versionRegex) { $a = $1; $a =~ s/-//g; print lc $a }' $file`
-	
-	modPackEntries=$name','$version','$url',mod\n'
+	version=`perl -e 'if ($ARGV[0] =~ '$versionRegex') { $a = $1; $a =~ s/-//g; print lc $a }' $file`
+	echo 'if ($ARGV[0] =~ '$versionRegex') { $a = $1; $a =~ s/-//g; print lc $a }' $file
+	modPackEntries=$modPackEntries''$name','$version','$url',mod\n'
 		echo "deleting $moddir""$jarPrefix"
-		echo "deleting""$multimcmodsdir""$jarPrefix"
 
 	echo "Check if $name is up to date"
 	if [ -e "tmp"/$file ]; then
@@ -53,17 +48,15 @@ for file in config/jarconfig.d/*.cfg; do
 
 		echo "deleting $moddir""$jarPrefix"
 		rm -f $moddir$jarPrefix
-		echo "deleting""$multimcmodsdir $jarPrefix"
-		rm -f $multimcmodsdir$jarPrefix
 
 		echo "Copy $file into server to mods"
 		cp "tmp/"$file $moddir
-		echo "Copy $file into server to multimc"
-		cp "tmp/"$file $multimcmodsdir
   fi
 done
 
-echo $modEntries
+IFS=
+echo -e `cat html/enderiotestpack.cfg`'\n'$modPackEntries > $webroot'enderiotestpack.cfg'
+echo -e $modPackEntries $webroot'enderiotestpack.cfg'
 
 nc -z localhost $minecraftport
 ncReturn=$?
@@ -76,7 +69,6 @@ fi
 if [ "$smthchanged" = true ] ; then
 
 	rm -Rf $webroot"*"
-	zip -r $webroot$multimcarchivename "multimc"
 
 	if [ $ncReturn -eq 0 ]; then
 		echo "server is running"
@@ -106,9 +98,7 @@ if [ "$smthchanged" = true ] ; then
 		echo "s"
 	fi
 	cp -r html/* $webroot
-        mufile="$multimcarchivename".zip
-        eval "awk '{gsub(/"'\$mufile'"/,\""$mufile"\");gsub(/"'\$modEntries'"/,\""$modEntries"\")}1' html/index.php > "$webroot"index.php"
-	echo $(expr $multimcversion + 1) > multimc.version
+        eval "awk '{gsub(/"'\$modEntries'"/,\""$modEntries"\")}1' html/index.php > "$webroot"index.php"
 fi
 nc -z localhost $minecraftport
 ncReturn=$?
@@ -123,4 +113,8 @@ fi
 	sass "html/css/util.scss" $webroot"css/util.css"
 	sass "html/css/main.scss" $webroot"css/main.css"
 
+
+IFS=
+echo -e `cat html/enderiotestpack.cfg`'\n'$modPackEntries > $webroot'enderiotestpack.cfg'
+echo -e $modPackEntries $webroot'enderiotestpack.cfg'
 
