@@ -23,3 +23,5 @@ server/*.jar
 server/eula.txt
 server/debug
 server/down.tgz
+server/newconfig
+server/temp

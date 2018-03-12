@@ -1,18 +1,38 @@
 {
 	"default_ranks": {
 		"player": "player",
-		"op": "op"
+		"op": "admin"
 	},
 	"ranks": {
 		"player": {
 			"parent": "builtin_player",
-			"permissions": [],
+			"syntax": "<&7$name&r> ",
+			"permissions": [
+				"-ftbu.display.admin_info",
+				"+ftbu.display.permissions",
+				"+command.ftb.ranks.get",
+				"-ftbu.homes.list_other"
+			],
 			"config": {}
 		},
-		"op": {
-			"parent": "builtin_op",
+		"moderator": {
+			"parent": "builtin_player",
 			"syntax": "<&2$name&r> ",
-			"permissions": [],
+			"permissions": [
+				"+ftbu.claims.modify.others",
+				"+ftbu.claims.block.interact.*",
+				"+ftbu.claims.block.edit.*",
+				"+command.ban",
+				"+command.tp"
+			],
+			"config": {}
+		},
+		"admin": {
+			"parent": "builtin_op",
+			"syntax": "<&5$name&r> ",
+			"permissions": [
+				"+command.*"
+			],
 			"config": {}
 		}
 	}

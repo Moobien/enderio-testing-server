@@ -11,6 +11,30 @@
       "fortuneChance": 0.0
     }
   ],
+  "minecraft:sand:0": [
+    {
+      "stack": {
+        "name": "exnihilocreatio:block_dust",
+        "amount": 1,
+        "meta": 0
+      },
+      "miningLevel": 0,
+      "chance": 1.0,
+      "fortuneChance": 0.0
+    }
+  ],
+  "minecraft:gravel:0": [
+    {
+      "stack": {
+        "name": "minecraft:sand",
+        "amount": 1,
+        "meta": 0
+      },
+      "miningLevel": 0,
+      "chance": 1.0,
+      "fortuneChance": 0.0
+    }
+  ],
   "minecraft:stone:0": [
     {
       "stack": {
@@ -59,12 +83,36 @@
       "fortuneChance": 1.25
     }
   ],
-  "minecraft:concrete:2": [
+  "appliedenergistics2:sky_stone_block:0": [
+    {
+      "stack": {
+        "name": "exnihilocreatio:block_skystone_crushed",
+        "amount": 1,
+        "meta": 0
+      },
+      "miningLevel": 3,
+      "chance": 1.0,
+      "fortuneChance": 0.0
+    }
+  ],
+  "minecraft:cobblestone:0": [
+    {
+      "stack": {
+        "name": "minecraft:gravel",
+        "amount": 1,
+        "meta": 0
+      },
+      "miningLevel": 0,
+      "chance": 1.0,
+      "fortuneChance": 0.0
+    }
+  ],
+  "minecraft:concrete:4": [
     {
       "stack": {
         "name": "minecraft:concrete_powder",
         "amount": 1,
-        "meta": 2
+        "meta": 4
       },
       "miningLevel": 1,
       "chance": 1.0,
@@ -95,6 +143,18 @@
       "fortuneChance": 0.0
     }
   ],
+  "minecraft:concrete:2": [
+    {
+      "stack": {
+        "name": "minecraft:concrete_powder",
+        "amount": 1,
+        "meta": 2
+      },
+      "miningLevel": 1,
+      "chance": 1.0,
+      "fortuneChance": 0.0
+    }
+  ],
   "minecraft:concrete:3": [
     {
       "stack": {
@@ -107,12 +167,24 @@
       "fortuneChance": 0.0
     }
   ],
-  "minecraft:concrete:4": [
+  "minecraft:concrete:15": [
     {
       "stack": {
         "name": "minecraft:concrete_powder",
         "amount": 1,
-        "meta": 4
+        "meta": 15
+      },
+      "miningLevel": 1,
+      "chance": 1.0,
+      "fortuneChance": 0.0
+    }
+  ],
+  "minecraft:concrete:12": [
+    {
+      "stack": {
+        "name": "minecraft:concrete_powder",
+        "amount": 1,
+        "meta": 12
       },
       "miningLevel": 1,
       "chance": 1.0,
@@ -131,24 +203,36 @@
       "fortuneChance": 0.0
     }
   ],
-  "minecraft:concrete:14": [
-    {
-      "stack": {
-        "name": "minecraft:concrete_powder",
-        "amount": 1,
-        "meta": 14
-      },
-      "miningLevel": 1,
-      "chance": 1.0,
-      "fortuneChance": 0.0
-    }
-  ],
   "minecraft:concrete:5": [
     {
       "stack": {
         "name": "minecraft:concrete_powder",
         "amount": 1,
         "meta": 5
+      },
+      "miningLevel": 1,
+      "chance": 1.0,
+      "fortuneChance": 0.0
+    }
+  ],
+  "minecraft:concrete:10": [
+    {
+      "stack": {
+        "name": "minecraft:concrete_powder",
+        "amount": 1,
+        "meta": 10
+      },
+      "miningLevel": 1,
+      "chance": 1.0,
+      "fortuneChance": 0.0
+    }
+  ],
+  "minecraft:concrete:14": [
+    {
+      "stack": {
+        "name": "minecraft:concrete_powder",
+        "amount": 1,
+        "meta": 14
       },
       "miningLevel": 1,
       "chance": 1.0,
@@ -191,36 +275,12 @@
       "fortuneChance": 0.0
     }
   ],
-  "minecraft:concrete:12": [
+  "minecraft:concrete:11": [
     {
       "stack": {
         "name": "minecraft:concrete_powder",
         "amount": 1,
-        "meta": 12
-      },
-      "miningLevel": 1,
-      "chance": 1.0,
-      "fortuneChance": 0.0
-    }
-  ],
-  "minecraft:concrete:10": [
-    {
-      "stack": {
-        "name": "minecraft:concrete_powder",
-        "amount": 1,
-        "meta": 10
-      },
-      "miningLevel": 1,
-      "chance": 1.0,
-      "fortuneChance": 0.0
-    }
-  ],
-  "minecraft:concrete:15": [
-    {
-      "stack": {
-        "name": "minecraft:concrete_powder",
-        "amount": 1,
-        "meta": 15
+        "meta": 11
       },
       "miningLevel": 1,
       "chance": 1.0,
@@ -239,58 +299,10 @@
       "fortuneChance": 0.0
     }
   ],
-  "minecraft:concrete:11": [
-    {
-      "stack": {
-        "name": "minecraft:concrete_powder",
-        "amount": 1,
-        "meta": 11
-      },
-      "miningLevel": 1,
-      "chance": 1.0,
-      "fortuneChance": 0.0
-    }
-  ],
   "minecraft:netherrack:0": [
     {
       "stack": {
         "name": "exnihilocreatio:block_netherrack_crushed",
-        "amount": 1,
-        "meta": 0
-      },
-      "miningLevel": 0,
-      "chance": 1.0,
-      "fortuneChance": 0.0
-    }
-  ],
-  "minecraft:gravel:0": [
-    {
-      "stack": {
-        "name": "minecraft:sand",
-        "amount": 1,
-        "meta": 0
-      },
-      "miningLevel": 0,
-      "chance": 1.0,
-      "fortuneChance": 0.0
-    }
-  ],
-  "minecraft:sand:0": [
-    {
-      "stack": {
-        "name": "exnihilocreatio:block_dust",
-        "amount": 1,
-        "meta": 0
-      },
-      "miningLevel": 0,
-      "chance": 1.0,
-      "fortuneChance": 0.0
-    }
-  ],
-  "minecraft:cobblestone:0": [
-    {
-      "stack": {
-        "name": "minecraft:gravel",
         "amount": 1,
         "meta": 0
       },

@@ -47,6 +47,14 @@
       "meta": 1
     }
   },
+  "minecraft:leaves2:0": {
+    "fluid": "water",
+    "amount": 250
+  },
+  "minecraft:leaves2:1": {
+    "fluid": "water",
+    "amount": 250
+  },
   "minecraft:leaves:0": {
     "fluid": "water",
     "amount": 250
@@ -60,14 +68,6 @@
     "amount": 250
   },
   "minecraft:leaves:3": {
-    "fluid": "water",
-    "amount": 250
-  },
-  "minecraft:leaves2:0": {
-    "fluid": "water",
-    "amount": 250
-  },
-  "minecraft:leaves2:1": {
     "fluid": "water",
     "amount": 250
   },
