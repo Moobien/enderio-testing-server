@@ -94,6 +94,18 @@ if($serverSock !== FALSE)
               </div>
             </div>
           <p></p>
+<h2>Rules</h2>
+                <p>Play nice, moderators word is law. Do not use item duplication bugs. Do not abuse AFK tricks for resources. You will at least be kicked, and m$
+          <h2>Suggestions</h2>
+            <p>If you have any mod suggestions, they must fulfill at least one of the following guidelines:</p>
+              <ul>
+                <li>Ender IO or Ender Zoo has specific integration with that mod.</li>
+                <li>The mod has specific integration with Ender IO or a has a good candidate for it</li>
+                <li>The mod enables testing a specific functionality of Ender IO</li>
+                <li>The mod provides a replacement for a currently broken/missing feature of Ender IO</li>
+                <li>The mod helps keep the server running</li>
+              </ul>
+            <p>The mod must also be publicly available for Minecraft 1.12.2. Remember, no begging.</p>
           <h2>Dependencies</h2>
           <p>
             We automatically generate an always up-to-date zip for MultiMC that contains all the dependencies. This instance will crash on the first load due to the updater. Each time you launch the instance it will be updated to use the latest version of the server pack, including mods and configs.
@@ -103,18 +115,22 @@ if($serverSock !== FALSE)
           <p><i>MultiMC is a free, open source launcher for Minecraft. It allows you to have multiple separated instances of Minecraft. Find out more about MultiMC at <a href="https://multimc.org/#Download">the MultiMC project page</a></i><br></p>
                   <p>Getting started: <a href="https://github.com/MultiMC/MultiMC5/wiki/Getting-Started">https://github.com/MultiMC/MultiMC5/wiki/Getting-Started</a></p><br>
           <p>The server is running <span class="highlight">Minecraft 1.12.2</span> with <span class="highlight">forge-1.12.2-14.23.2.2624</span></p>
-	      <h2>Rules</h2>
-		<p>Play nice, moderators word is law. Do not use item duplication bugs. Do not abuse AFK tricks for resources. You will at least be kicked, and most likely banned if found doing these things.</p>
-	  <h2>Suggestions</h2>
-	    <p>If you have any mod suggestions, they must fulfill at least one of the following guidelines:</p>
-	      <ul>
-	        <li>Ender IO or Ender Zoo has specific integration with that mod.</li>
-	        <li>The mod has specific integration with Ender IO or a has a good candidate for it</li>
-	        <li>The mod enables testing a specific functionality of Ender IO</li>
-	        <li>The mod provides a replacement for a currently broken/missing feature of Ender IO</li>
-	        <li>The mod helps keep the server running</li>
-	      </ul>
-            <p>The mod must also be publicly available for Minecraft 1.12.2. Remember, no begging.</p> 
+                <ul>
+<?php
+$row = 1;
+if (($handle = fopen("enderiotestpack.cfg", "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+        $row++;
+	 if (array(null) !== $data) {
+        	 echo "<li><a href=\"".$data[2]."\">".$data[0]."-".$data[1]."</a></li>\n";
+    	}
+
+    }
+    fclose($handle);
+}
+?>
+</ul>
+
         </div>
       </div>
       <div id="margin-fix">&nbsp;</div>

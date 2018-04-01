@@ -98,7 +98,6 @@ if [ "$smthchanged" = true ] ; then
 		echo "s"
 	fi
 	cp -r html/* $webroot
-        eval "awk '{gsub(/"'\$modEntries'"/,\""$modEntries"\")}1' html/index.php > "$webroot"index.php"
 fi
 nc -z localhost $minecraftport
 ncReturn=$?
