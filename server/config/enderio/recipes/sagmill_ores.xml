@@ -2456,63 +2456,69 @@
   <recipe name="Sagmill: draconicevolution:draconium_ore:0 Ore" required="false">
     <sagmilling energy="3600">
       <input name="draconicevolution:draconium_ore:0" />
-      <output name="dustDraconic" amount="2" />
+      <output name="dustDraconium" amount="3" />
+      <output name="dustDraconium" amount="2" chance="0.4" />
+      <output name="dustDraconium" amount="2" chance="0.15"/>
       <output name="oredict:cobblestone" chance="0.15" />
     </sagmilling>
   </recipe>
 
   <recipe name="Sagmill: Nether Draconic Ore" required="false">
     <sagmilling energy="3200">
-      <input name="oreNetherDraconic" />
-      <output name="dustDraconic" amount="4" />
+      <input name="oreNetherDraconium" />
+      <output name="dustDraconium" amount="4" />
       <output name="minecraft:netherrack" chance="0.15" />
     </sagmilling>
   </recipe>
 
-  <recipe name="Sagmill: Dense Draconic Ore" required="false">
+  <recipe name="Sagmill: Dense Draconium Ore" required="false">
     <sagmilling energy="4800">
-      <input name="denseoreDraconic" />
-      <output name="oreDraconic" amount="4" />
+      <input name="denseoreDraconium" />
+      <output name="oreDraconium" amount="4" />
     </sagmilling>
   </recipe>
 
-  <recipe name="Sagmill: Draconic Ingot" required="false">
+  <recipe name="Sagmill: Draconium Ingot" required="false">
     <sagmilling energy="2400" bonus="none">
-      <input name="ingotDraconic" />
-      <output name="dustDraconic" />
+      <input name="ingotDraconium" />
+      <output name="dustDraconium" />
     </sagmilling>
   </recipe>
 
-  <recipe name="Smelting: Draconic Dust" required="false">
+  <recipe name="Smelting: Draconium Dust" required="false">
     <smelting>
-      <input name="dustDraconic" />
-      <output name="ingotDraconic" />
+      <input name="dustDraconium" />
+      <output name="ingotDraconium" />
     </smelting>
   </recipe>
 
-  <recipe name="Sagmill: Draconic Block" required="false">
+  <recipe name="Sagmill: Draconium Block" required="false">
     <sagmilling energy="3600" bonus="none">
-      <input name="blockDraconic" />
-      <output name="dustDraconic" amount="9" />
+      <input name="blockDraconium" />
+      <output name="dustDraconium" amount="9" />
     </sagmilling>
   </recipe>
 
-  <!-- Draconic (Draconic) -->
+  <!-- Draconium (Draconic) -->
 
   <recipe name="Sagmill: draconicevolution:draconium_ore:1 Ore" required="false">
     <sagmilling energy="3600">
       <input name="draconicevolution:draconium_ore:1" />
-      <output name="dustDraconic" amount="2" />
+      <output name="dustDraconium" amount="3" />
+      <output name="dustDraconium" amount="2" chance="0.4" />
+      <output name="dustDraconium" amount="2" chance="0.15"/>
       <output name="minecraft:netherrack" chance="0.15" />
     </sagmilling>
   </recipe>
 
-  <!-- Draconic (Draconic) -->
+  <!-- Draconium (Draconic) -->
 
   <recipe name="Sagmill: draconicevolution:draconium_ore:2 Ore" required="false">
     <sagmilling energy="3600">
       <input name="draconicevolution:draconium_ore:2" />
-      <output name="dustDraconic" amount="2" />
+      <output name="dustDraconium" amount="3" />
+      <output name="dustDraconium" amount="2" chance="0.4" />
+      <output name="dustDraconium" amount="2" chance="0.15"/>
       <output name="minecraft:end_stone" chance="0.15" />
     </sagmilling>
   </recipe>
@@ -2574,6 +2580,125 @@
       <input name="oreEndInferium" />
       <output name="essenceInferium" amount="4" />
       <output name="minecraft:end_stone" chance="0.15" />
+    </sagmilling>
+  </recipe>
+
+  <!-- DimensionalShard (RFTools) -->
+
+  <recipe name="Sagmill: oreDimensionalShard Ore" required="false">
+    <sagmilling energy="3600" bonus="chance_only">
+      <input name="oreDimensionalShard" />
+      <output name="rftools:dimensional_shard" amount="4" />
+      <output name="rftools:dimensional_shard" chance="0.50" amount="3" />
+      <output name="rftools:dimensional_shard" chance="0.15" amount="3" />
+      <output name="minecraft:cobblestone" chance="0.15" amount="1" />
+    </sagmilling>
+  </recipe>
+
+
+<!-- Temp Fix For Exnihilo having wrong oredict -->
+  
+  <recipe name="Sagmill: Yellorium Ore" required="false">
+    <sagmilling energy="3600">
+      <input name="oreYellorium" />
+      <output name="dustYellorium" amount="2" />
+      <output name="dustCyanite" chance="0.05" required="false" />
+      <output name="oredict:cobblestone" chance="0.15" />
+    </sagmilling>
+  </recipe>
+  
+<!-- Tiny Progessions -->
+  
+  <recipe name="Sagmill: Tiny Progressions Lava Ore" required="false">
+    <sagmilling energy="3600">
+      <input name="tp:lava_ore" />
+      <output name="gemLava" amount="2" />
+      <output name="gemLava" chance="0.75" amount="2" />
+      <output name="gemLava" chance="0.5"/>
+      <output name="oredict:cobblestone" chance="0.15" />
+    </sagmilling>
+  </recipe>
+  
+  <recipe name="Sagmill: Tiny Progressions Ender Ore" required="false">
+    <sagmilling energy="3600">
+      <input name="tp:ender_ore" />
+      <output name="dustEnder" amount="6" />
+      <output name="dustEnder" chance="0.75" amount="2" />
+      <output name="dustEnder" chance="0.5" amount="2" />
+      <output name="oredict:cobblestone" chance="0.15" />
+    </sagmilling>
+  </recipe>
+  
+  <!-- Quark -->
+
+  <recipe name="Sagmill: Quark Ender Biotite Ore" required="false">
+    <sagmilling energy="3600">
+      <input name="quark:biotite_ore" />
+      <output name="gemEnderBiotite" amount="1" />
+      <output name="gemEnderBiotite" amount="1" chance="0.25" />
+      <output name="gemEnderBiotite" amount="1" chance="0.15"/>
+      <output name="minecraft:end_stone" chance="0.15" />
+    </sagmilling>
+  </recipe>
+  
+<!-- Thermal Fluid Ores -->
+
+  <recipe name="Sagmill: Resonate End Stone" required="false">
+    <sagmilling energy="5000">
+      <input name="oreFluidEnder" />
+      <output name="crystalEnder" amount="3" />
+      <output name="crystalEnder" amount="3" chance="0.5" />
+      <output name="minecraft:end_stone" chance="0.15" />
+    </sagmilling>
+  </recipe>
+
+  <recipe name="Sagmill: Oil Sand" required="false">
+    <sagmilling energy="2000">
+      <input name="oreFluidCrudeOilSand" />
+      <output name="crystalCrudeOil" amount="3" />
+      <output name="crystalCrudeOil" amount="3" chance="0.5" />
+      <output name="thermalfoundation:material:833" amount="1" chance="0.15"/>
+      <output name="minecraft:sand" chance="0.15" />
+    </sagmilling>
+  </recipe>
+
+  <recipe name="Sagmill: Oil Shale" required="false">
+    <sagmilling energy="2000">
+      <input name="oreFluidCrudeOilShale" />
+      <output name="crystalCrudeOil" amount="3" />
+      <output name="crystalCrudeOil" amount="3" chance="0.5" />
+      <output name="minecraft:flint" amount="1" chance="0.15"/>
+      <output name="minecraft:gravel" chance="0.15" />
+    </sagmilling>
+  </recipe>
+
+  <recipe name="Sagmill: Destabilized Redstone Ore" required="false">
+    <sagmilling energy="3600">
+      <input name="oreFluidRedstone" />
+      <output name="crystalRedstone" amount="3" />
+      <output name="crystalRedstone" amount="3" chance="0.5" />
+      <output name="itemCinnabar" amount="1" chance="0.5"/>
+      <output name="minecraft:stone" chance="0.15" />
+    </sagmilling>
+  </recipe>
+  
+  <recipe name="Sagmill: Energized Glowstone Ore" required="false">
+    <sagmilling energy="2000">
+      <input name="oreFluidGlowstone" />
+      <output name="crystalGlowstone" amount="3" />
+      <output name="crystalGlowstone" amount="3" chance="0.5" />
+      <output name="dustSulfer" amount="1" chance="0.5"/>
+      <output name="minecraft:netherrack" chance="0.15" />
+    </sagmilling>
+  </recipe>
+
+  <!-- Thermal Iridium Ore -->
+  <recipe name="Sagmill: Iridium Ore" required="false">
+    <sagmilling energy="5000">
+      <input name="oreIridium" />
+      <output name="dustIridium" amount="3" />
+      <output name="dustPlatinum" amount="2" chance="0.5" />
+      <output name="minecraft:stone" chance="0.15" />
     </sagmilling>
   </recipe>
 

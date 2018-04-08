@@ -4,8 +4,12 @@ basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $basedir
 source "config/base.cfg"
 echo "source ""config/base.cfg"
-serverdir="server/"
+serverdir=$basedir"server/"
 moddir=$serverdir"mods/"
+
+echo $serverdir
+echo $moddir
+
 smthchanged=false
 minecraftport=`grep server-port "server/server.properties" |cut -d'=' -f2 | tr -d '\040\011\012\015'`
 
@@ -18,6 +22,11 @@ for file in config/jarconfig.d/*.cfg; do
     echo "$file"
 
 	source $file
+	echo $name
+	echo $jarPrefix
+	echo $artifact
+	echo $jenkinsURL
+	echo $versionRegex
 	# $name
 	# $jarPrefix
 	# $artifact
@@ -37,6 +46,7 @@ for file in config/jarconfig.d/*.cfg; do
 	echo "Check if $name is up to date"
 	if [ -e "tmp"/$file ]; then
 		echo "$name is up to date!"
+		echo "faiiiiil rm -f $moddir$jarPrefix"
 	else
 		smthchanged=true
 		# Remove old bot jar

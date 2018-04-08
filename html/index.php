@@ -95,7 +95,7 @@ if($serverSock !== FALSE)
             </div>
           <p></p>
 <h2>Rules</h2>
-                <p>Play nice, moderators word is law. Do not use item duplication bugs. Do not abuse AFK tricks for resources. You will at least be kicked, and m$
+                <p>Play nice, moderators word is law. Do not use item duplication bugs. Do not abuse AFK tricks for resources. You will at least be kicked, and most likely banned if found doing these things.</p>
           <h2>Suggestions</h2>
             <p>If you have any mod suggestions, they must fulfill at least one of the following guidelines:</p>
               <ul>

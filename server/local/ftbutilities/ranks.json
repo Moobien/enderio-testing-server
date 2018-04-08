@@ -11,7 +11,8 @@
 				"-ftbu.display.admin_info",
 				"+ftbu.display.permissions",
 				"+command.ftb.ranks.get",
-				"-ftbu.homes.list_other"
+				"-ftbu.homes.list_other",
+				"+ftbutilities.claims.block.edit.openblocks.grave"
 			],
 			"config": {}
 		},
