@@ -1,0 +1,30 @@
+{
+"dependencies": "thermalfoundation",
+"populate": {
+"aluminum": {
+"distribution": "uniform",
+"generator": {
+"block": [
+{
+"name": "thermalfoundation:ore",
+"metadata": 4
+}
+],
+"material": "stone",
+"cluster-size": 4
+},
+"cluster-count": 8,
+"min-height": 40,
+"max-height": 75,
+"retrogen": "true",
+"biome": "all",
+"dimension": {
+"restriction": "blacklist",
+"value": [
+-1,
+1
+]
+}
+}
+}
+}

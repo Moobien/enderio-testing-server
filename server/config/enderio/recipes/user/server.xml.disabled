@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enderio:recipes xmlns:enderio="http://enderio.com/recipes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://enderio.com/recipes recipes.xsd ">
+
+  <recipe name="Farming Station" required="true">
+    <crafting>
+      <grid size="3x3">
+        <item name="ELECTRICAL_STEEL" /><item name="minecraft:diamond_hoe" /><item name="ELECTRICAL_STEEL" />
+        <item name="ingotIron" /><item name="CHASSIS" /><item name="ingotIron" />
+        <item name="GEAR_ENERGIZED" /><item name="minecraft:diamond_axe" /><item name="GEAR_ENERGIZED" />
+      </grid>
+      <output name="enderio:block_farm_station" />
+    </crafting>
+  </recipe>
+
+  <recipe name="ae2 is stupid" required="true">
+    <crafting>
+      <grid>
+        <item name="stickWood"/><item /><item name="stickWood"/>
+        <item /><item /><item />
+        <item name="stickWood"/><item /><item name="stickWood"/>
+      </grid>
+      <output name="GEAR_WOOD"/>
+    </crafting>
+  </recipe>
+
+
+</enderio:recipes>
+ 
