@@ -7,34 +7,31 @@
 		"player": {
 			"parent": "builtin_player",
 			"syntax": "<&7$name&r> ",
-			"permissions": [
-				"-ftbu.display.admin_info",
-				"+ftbu.display.permissions",
-				"+command.ftb.ranks.get",
-				"-ftbu.homes.list_other",
-				"+ftbutilities.claims.block.edit.openblocks.grave"
-			],
-			"config": {}
+			"permissions": {
+				"ftbu.display.admin_info": false,
+				"ftbu.display.permissions": true,
+				"command.ftb.ranks.get": true,
+				"ftbu.homes.list_other": false,
+				"ftbutilities.claims.block.edit.openblocks.grave": true
+			}
 		},
 		"moderator": {
 			"parent": "builtin_player",
 			"syntax": "<&2$name&r> ",
-			"permissions": [
-				"+ftbu.claims.modify.others",
-				"+ftbu.claims.block.interact.*",
-				"+ftbu.claims.block.edit.*",
-				"+command.ban",
-				"+command.tp"
-			],
-			"config": {}
+			"permissions": {
+				"ftbu.claims.modify.others": true,
+				"ftbu.claims.block.interact.*": true,
+				"ftbu.claims.block.edit.*": true,
+				"command.ban": true,
+				"command.tp": true
+			}
 		},
 		"admin": {
 			"parent": "builtin_op",
 			"syntax": "<&5$name&r> ",
-			"permissions": [
-				"+command.*"
-			],
-			"config": {}
+			"permissions": {
+				"command.*": true
+			}
 		}
 	}
 }
